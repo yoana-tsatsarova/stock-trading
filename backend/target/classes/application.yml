@@ -1,0 +1,29 @@
+## DB config goes here
+debug: true
+spring:
+  output:
+    ansi:
+      enabled: always
+  sql:
+    init:
+      platform: postgresql
+  datasource:
+    url: jdbc:postgresql://localhost:5432/stock-exchange
+    username: username
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+
+## Logging settings
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
+
