@@ -25,7 +25,7 @@ import java.util.List;
 @RequestMapping("/")
 public class Controller {
 
-    private static final String IEX_API_BASE_URL = "https://cloud.iexapis.com/stable";
+    private static final String IEX_API_URL = "https://cloud.iexapis.com/stable";
     private static final String IEX_API_TOKEN = "";
 
     private final RestTemplate restTemplate = new RestTemplate();
@@ -65,7 +65,7 @@ public class Controller {
     public ResponseEntity<StockDTO> getStockPrice(@PathVariable("symbol") String symbol) {
         try {
             symbol = symbol.toUpperCase();
-            String url = IEX_API_BASE_URL + "/stock/{symbol}/quote/latestPrice?token=" + IEX_API_TOKEN;
+            String url = IEX_API_URL + "/stock/{symbol}/quote/latestPrice?token=" + IEX_API_TOKEN;
             ResponseEntity<Double> response = restTemplate.getForEntity(url, Double.class, symbol);
             stockService.seachForStock(symbol, response.getBody());
             StockDTO stockDTO = new StockDTO(symbol, response.getBody());
