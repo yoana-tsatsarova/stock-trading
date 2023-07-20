@@ -75,6 +75,7 @@ public class Controller {
         }
     }
 
+
     @PostMapping("buy")
     ResponseEntity<PortfolioResponseDTO> buyStock(@RequestBody PortfolioStockDTO portfolio, HttpServletRequest req) {
         portfolio = new PortfolioStockDTO(portfolio.id(), portfolio.symbol().toUpperCase(), portfolio.quantity());
